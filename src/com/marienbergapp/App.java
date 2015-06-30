@@ -4,20 +4,30 @@ import java.util.ArrayList;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 
 public class App extends Application {
 
 	boolean GpsAvaible = false;
 	private Location currentPosition;
 	private ArrayList<Location> spots = new ArrayList<Location>();
+	private onLocationChangeListener locListener;
+	private LocationManager locationManager;
+
+	public void checkForGps() {
+		if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER))
+			startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+	}
 
 	public void onCreate() {
-		LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-
+		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+	    
 		if (locationManager.getAllProviders() != null) {
 			GpsAvaible = true;
 		}
@@ -44,6 +54,8 @@ public class App extends Application {
 					@Override
 					public void onLocationChanged(Location location) {
 						currentPosition = location;
+						if (locListener != null)
+							locListener.onLocationChange(location);
 					}
 				});
 
@@ -57,7 +69,16 @@ public class App extends Application {
 		return spots;
 	}
 
-	/*public void setSpots(ArrayList<Location> spots) {
-		this.spots = spots;
-	}*/
+	/*
+	 * public void setSpots(ArrayList<Location> spots) { this.spots = spots; }
+	 */
+
+	public void setOnLocationChangeListener(onLocationChangeListener locListener) {
+		this.locListener = locListener;
+	}
+
+	public interface onLocationChangeListener {
+		void onLocationChange(Location location);
+
+	}
 }
