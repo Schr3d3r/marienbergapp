@@ -3,6 +3,7 @@ package com.marienbergapp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -17,10 +18,13 @@ import android.widget.ListView;
 
 public class ListActivity extends Activity {
 
+	App app;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
+		app = (App) getApplication();
 		
 	    final ListView listview = (ListView) findViewById(R.id.listView1);
 	    String[] values = new String[] { "Android", "iPhone", "WindowsMobile",

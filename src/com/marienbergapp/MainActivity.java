@@ -4,16 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
-	int a = 0;
-
+	App app;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		app = (App) getApplication();
 	}
 
 	@Override
@@ -38,11 +38,6 @@ public class MainActivity extends Activity {
 			
 			break;
 		}
-			case R.id.action_add: {
-				a++;
-				Toast.makeText(getApplicationContext(), ""+a, Toast.LENGTH_SHORT).show();
-				break;
-			}
 		}
 		return super.onOptionsItemSelected(item);
 	}
