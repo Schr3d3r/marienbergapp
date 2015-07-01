@@ -7,12 +7,14 @@ import android.location.Location;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements onLocationChangeListener{
 
 	App app;
-	TextView textview1;
+	Button button;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +22,23 @@ public class MainActivity extends Activity implements onLocationChangeListener{
 		setContentView(R.layout.activity_main);
 		app = (App) getApplication();
 		app.setOnLocationChangeListener(this);
-		textview1=(TextView) findViewById(R.id.textView1);
-	
-	}
+	        button=(Button)findViewById(R.id.button);
+	            button.setOnClickListener(new View.OnClickListener() {
+	                @Override
+	                public void onClick(View v) {
+	                    startActivity(new Intent(MainActivity.this, ListActivity.class));
+	                }
+	            });
+	        button=(Button)findViewById(R.id.button2);
+	        button.setOnClickListener(new View.OnClickListener() {
+	            @Override
+	            public void onClick(View v) {
+	                startActivity(new Intent(MainActivity.this, ListActivity.class));
+	            }
+	        });
+
+
+	    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -52,6 +68,6 @@ public class MainActivity extends Activity implements onLocationChangeListener{
 
 	@Override
 	public void onLocationChange(Location location) {
-		textview1.append(location.toString());		
+	//	textview1.append(location.toString());		
 	}
 }

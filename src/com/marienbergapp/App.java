@@ -15,7 +15,7 @@ public class App extends Application {
 
 	boolean GpsAvaible = false;
 	private Location currentPosition;
-	private ArrayList<Location> spots = new ArrayList<Location>();
+	private ArrayList<Spot> spots = new ArrayList<Spot>();
 	private onLocationChangeListener locListener;
 	private LocationManager locationManager;
 
@@ -62,7 +62,11 @@ public class App extends Application {
 		return currentPosition;
 	}
 
-	public ArrayList<Location> getSpots() {
+	public ArrayList<Location> getSpotPositions() {
+		return new ArrayList<Location>();
+	}
+
+	public ArrayList<Spot> getSpots() {
 		return spots;
 	}
 

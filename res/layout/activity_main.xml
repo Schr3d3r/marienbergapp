@@ -1,20 +1,83 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView1"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:background="@android:color/holo_blue_dark">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+        android:id="@+id/tableLayout">
+
+        <ImageView
+            android:layout_width="520dp"
+            android:layout_height="708dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_weight="50"
+            android:src="@drawable/herzog" />
+
+    </TableLayout>
 
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:id="@+id/LinearLayout">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="63dp"
+            android:text="Autofahrer"
+            android:id="@+id/button"
+            android:textColor="#ffe6ff00"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_weight="50" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="63dp"
+            android:text="Fußgänger"
+            android:id="@+id/button2"
+            android:textColor="#ffe6ff00"
+            android:background="@android:color/holo_blue_dark"
+            android:layout_weight="50" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:gravity="center">
 
         <TextView
-            android:id="@+id/textView1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
-        
-    </LinearLayout>
- </ScrollView>
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Wie wollen Sie fortfahren?"
+            android:id="@+id/textView"
+            android:layout_gravity="center|bottom"
+            android:layout_weight="0.09"
+            android:layout_column="1"
+            android:layout_marginBottom="96dp"
+            android:layout_alignBottom="@+id/tableLayout"
+            android:textColor="#ffe6ff00"
+            android:textAlignment="center"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="bottom" />
+    </FrameLayout>
+
+
+</RelativeLayout>
