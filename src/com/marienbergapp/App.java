@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -27,10 +26,8 @@ public class App extends Application {
 
 	public void onCreate() {
 		locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-	    
-		if (locationManager.getAllProviders() != null) {
-			GpsAvaible = true;
-		}
+
+		GpsAvaible = (locationManager.getAllProviders() != null);
 
 		locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
 				1, new LocationListener() {
