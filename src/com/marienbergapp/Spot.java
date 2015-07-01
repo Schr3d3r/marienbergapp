@@ -14,6 +14,7 @@ public class Spot {
 		this.position = l;
 		this.description = description;
 		this.questions = questions;
+		this.name = name;
 	}
 
 	public Location getPosition() {
